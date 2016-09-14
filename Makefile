@@ -1,9 +1,12 @@
 # docker-grafana-graphite makefile
 
 # Environment Varibles
-CONTAINER = kamon-grafana-dashboard
+CONTAINER =  kamon-grafana-dashboard
 
 .PHONY: up
+
+build : 
+	docker build --tag=kamon/grafana_graphite .
 
 prep :
 	mkdir -p \
@@ -17,7 +20,7 @@ prep :
 pull :
 	docker-compose pull
 
-up : prep pull
+up : prep 
 	docker-compose up -d
 
 down :
